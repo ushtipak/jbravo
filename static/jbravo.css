@@ -8,6 +8,7 @@ body {
 .flex-container {
     background: #44CF6C;
     color: honeydew;
+    height: 70px;
     border-top: 1px solid #A9FDAC;
     border-bottom: 1px solid #A9FDAC;
     align-items: center;
@@ -17,6 +18,7 @@ body {
 .letter {
     background: #32A287;
     width: 50px;
+    height: 30px;
     padding: 20px;
     font-size: x-large;
     font-weight: bold;
