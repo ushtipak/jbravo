@@ -20,4 +20,9 @@ function getDate() {
 
     today = dd + '-' + mm + '-' + yyyy;
     console.log(today);
+
+    let doneObj = document.getElementById(today + "-done");
+    let updateObj = document.getElementById(today + "-update");
+    doneObj.disabled = false;
+    updateObj.disabled = false;
 }
