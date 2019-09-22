@@ -31,3 +31,7 @@ function enableToday() {
     updateObj.disabled = false;
     containerObj.classList.add("selected");
 }
+
+function enableLockByDate() {
+    setInterval(function() { enableToday(); }, 1000 * 60 * 5);
+}
