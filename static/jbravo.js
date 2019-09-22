@@ -33,5 +33,6 @@ function enableToday() {
 }
 
 function enableLockByDate() {
+    enableToday();
     setInterval(function() { enableToday(); }, 1000 * 60 * 5);
 }
