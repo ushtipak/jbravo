@@ -15,6 +15,11 @@ body {
     display: flex;
 }
 
+.selected {
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
 .letter {
     background: #32A287;
     width: 50px;
