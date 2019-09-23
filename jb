@@ -2,6 +2,9 @@
 
 [ $# -ne 1 ] && echo "usage: $0 <message>" && exit 1
 
+d=$(date +%d-%m-%Y)
+f=${d}-$(echo ${1} | base64).html
+
 echo '''<!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,24 +13,14 @@ echo '''<!DOCTYPE html>
         <script src="static/jbravo.js"></script>
         <link rel="stylesheet" href="static/jbravo.css">
     </head>
-    <body onload="enableLockByDate()">'''
+    <body onload="enableLockByDate()">''' > ${f}
 
-d=$(date +%d-%m-%Y)
 for i in $(seq ${#1}); do
   c=$(echo "${1:i-1:1}")
   [[ ${c} == " " ]] && o=0 || o=$(printf '%d\n' "'$c")
-  echo "          <div class=\"flex-container\" id=\"${d}\">"
-  echo "              <div class=\"letter\" id=\"${d}-letter\">—</div>"
-  echo "              <div class=\"count-current\" id=\"${d}-count-current\">0</div>"
-  echo "              /"
-  echo "              <div class=\"count-target\" id=\"${d}-count-target\">${o}</div>"
-  echo "              <label>"
-  echo "                  <input class=\"done\" id=\"${d}-done\" type=\"text\" value=\"0\" disabled>"
-  echo "              </label>"
-  echo "              <input class=\"update\" id=\"${d}-update\" type=\"submit\" value=\"update\" disabled onclick=\"update('${d}');\">"
-  echo "          </div>"
+  echo -e "          <div class=\"flex-container\" id=\"${d}\">\n              <div class=\"letter\" id=\"${d}-letter\">—</div>\n              <div class=\"count-current\" id=\"${d}-count-current\">0</div>\n              /\n              <div class=\"count-target\" id=\"${d}-count-target\">${o}</div>\n              <label>\n                  <input class=\"done\" id=\"${d}-done\" type=\"text\" value=\"0\" disabled>\n              </label>\n              <input class=\"update\" id=\"${d}-update\" type=\"submit\" value=\"update\" disabled onclick=\"update('${d}');\">\n          </div>" >> ${f}
 done
 
 echo '''    </body>
-</html>'''
+</html>''' >> ${f}
 
