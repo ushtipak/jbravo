@@ -17,7 +17,7 @@ for i in $(seq ${#1}); do
   d=$(date +%d-%m-%Y -d "+$((i-1)) days")
   c=$(echo "${1:i-1:1}")
   [[ ${c} == " " ]] && o=0 || o=$(printf '%d\n' "'$c")
-  echo -e "          <div class=\"flex-container\" id=\"${d}\">\n              <div class=\"letter\" id=\"${d}-letter\">—</div>\n              <div class=\"count-current\" id=\"${d}-count-current\">0</div>\n              /\n              <div class=\"count-target\" id=\"${d}-count-target\">${o}</div>\n              <label>\n                  <input class=\"done\" id=\"${d}-done\" type=\"text\" value=\"0\" disabled>\n              </label>\n              <input class=\"update\" id=\"${d}-update\" type=\"submit\" value=\"update\" disabled onclick=\"update('${d}');\">\n          </div>" >> ${f}
+  echo -e "          <div class=\"flex-container\" id=\"${d}\">\n              <div class=\"letter\" id=\"${d}-letter\">—</div>\n              <div class=\"count-current\" id=\"${d}-count-current\">0</div>\n              /\n              <div class=\"count-target\" id=\"${d}-count-target\">${o}</div>\n              <label>\n                  <input class=\"done\" id=\"${d}-done\" type=\"text\" value=\"0\" disabled>\n              </label>\n              <input class=\"update\" id=\"${d}-update\" type=\"submit\" value=\"update\" disabled onclick=\"update('${d}');\">\n              <div class=\"date\">${d}</div>\n          </div>" >> ${f}
 done
 
 echo '''    </body>
